@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Tracker - Smart Maternal Care</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="js/api.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header" style="padding-bottom: 2.5rem;">
+            <h2>Daily Tracker</h2>
+            <p>Catat kondisi harian Anda untuk dianalisis AI.</p>
+        </header>
+
+        <main class="form-container">
+            <div class="progress-card" id="progressCard">
+                <div class="progress-header">
+                    <h3>Halo, <span id="displayNama">Ibu</span></h3>
+                    <span id="displayHari">Hari ke 1 dari 90</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill" id="progressBar" style="width: 1%;"></div>
+                </div>
+            </div>
+
+            <form id="dailyForm">
+                <div class="card mb-4">
+                    <h3 class="section-title"><i class="ph-fill ph-heartbeat text-primary"></i> Kesehatan Fisik</h3>
+                    
+                    <div class="form-group">
+                        <label>Berat Badan (kg)</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="bb" step="0.1" placeholder="Contoh: 65.5" required>
+                            <i class="ph ph-scales input-icon"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Minum Tablet Tambah Darah (TTD)?</label>
+                        <div class="chip-group">
+                            <input type="radio" name="ttd" id="ttd_ya" value="Ya" required>
+                            <label for="ttd_ya">Ya</label>
+                            <input type="radio" name="ttd" id="ttd_tidak" value="Tidak">
+                            <label for="ttd_tidak">Tidak</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Konsumsi Protein Hari Ini?</label>
+                        <div class="chip-group">
+                            <input type="radio" name="protein" id="protein_ya" value="Ya" required>
+                            <label for="protein_ya">Ya</label>
+                            <input type="radio" name="protein" id="protein_tidak" value="Tidak">
+                            <label for="protein_tidak">Tidak</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Makan Sayur & Buah?</label>
+                        <div class="chip-group">
+                            <input type="radio" name="sayur" id="sayur_ya" value="Ya" required>
+                            <label for="sayur_ya">Ya</label>
+                            <input type="radio" name="sayur" id="sayur_tidak" value="Tidak">
+                            <label for="sayur_tidak">Tidak</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Minum Air > 8 Gelas?</label>
+                        <div class="chip-group">
+                            <input type="radio" name="air" id="air_ya" value="Ya" required>
+                            <label for="air_ya">Ya</label>
+                            <input type="radio" name="air" id="air_tidak" value="Tidak">
+                            <label for="air_tidak">Tidak</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Melakukan Aktivitas Fisik Ringan?</label>
+                        <div class="chip-group">
+                            <input type="radio" name="aktivitas" id="aktivitas_ya" value="Ya" required>
+                            <label for="aktivitas_ya">Ya</label>
+                            <input type="radio" name="aktivitas" id="aktivitas_tidak" value="Tidak">
+                            <label for="aktivitas_tidak">Tidak</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Lama Tidur (Jam)</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="tidur" min="1" max="24" placeholder="Contoh: 8" required>
+                            <i class="ph ph-moon input-icon"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <h3 class="section-title"><i class="ph-fill ph-brain text-primary"></i> Kesehatan Mental</h3>
+                    
+                    <div class="form-group">
+                        <label class="">Bagaimana Mood Anda Hari Ini?</label>
+                        <div class="chip-group emoji-group mt-2">
+                            <input type="radio" name="mood" id="mood_baik" value="Baik" required>
+                            <label for="mood_baik">😊</label>
+                            
+                            <input type="radio" name="mood" id="mood_sedang" value="Sedang">
+                            <label for="mood_sedang">😐</label>
+                            
+                            <input type="radio" name="mood" id="mood_buruk" value="Buruk">
+                            <label for="mood_buruk">☹️</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Tingkat Stres (1 Ringan - 5 Berat)</label>
+                        <div class="slider-group">
+                            <input type="range" id="stres" min="1" max="5" value="1" oninput="document.getElementById('stresVal').innerText = this.value">
+                            <span class="slider-value" id="stresVal">1</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Tingkat Cemas (1 Ringan - 5 Berat)</label>
+                        <div class="slider-group">
+                            <input type="range" id="cemas" min="1" max="5" value="1" oninput="document.getElementById('cemasVal').innerText = this.value">
+                            <span class="slider-value" id="cemasVal">1</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Merasa Kesepian?</label>
+                        <div class="chip-group mt-2">
+                            <input type="radio" name="kesepian" id="kesepian_ya" value="Ya" required>
+                            <label for="kesepian_ya">Ya</label>
+                            <input type="radio" name="kesepian" id="kesepian_tidak" value="Tidak">
+                            <label for="kesepian_tidak">Tidak</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Ada Teman Bercerita Hari Ini?</label>
+                        <div class="chip-group mt-2">
+                            <input type="radio" name="teman" id="teman_ya" value="Ya" required>
+                            <label for="teman_ya">Ya</label>
+                            <input type="radio" name="teman" id="teman_tidak" value="Tidak">
+                            <label for="teman_tidak">Tidak</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <h3 class="section-title"><i class="ph-fill ph-warning-circle text-primary"></i> Gejala Kehamilan</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">Pilih gejala yang Anda alami hari ini (bisa lebih dari satu).</p>
+                    
+                    <div class="chip-group" style="flex-wrap: wrap;">
+                        <input type="checkbox" id="gejala_mual" value="Mual">
+                        <label for="gejala_mual" style="flex: 1 1 40%;">Mual Berlebihan</label>
+
+                        <input type="checkbox" id="gejala_pusing" value="Pusing">
+                        <label for="gejala_pusing" style="flex: 1 1 40%;">Pusing</label>
+
+                        <input type="checkbox" id="gejala_bengkak" value="Bengkak">
+                        <label for="gejala_bengkak" style="flex: 1 1 40%;">Bengkak Ekstrem</label>
+
+                        <input type="checkbox" id="gejala_perdarahan" value="Perdarahan">
+                        <label for="gejala_perdarahan" style="flex: 1 1 40%; border-color: #fca5a5; color: #ef4444;">Perdarahan</label>
+                    </div>
+
+                    <div class="form-group mt-4">
+                        <label>Keluhan Lain (Opsional)</label>
+                        <div class="input-wrapper">
+                            <input type="text" id="keluhan_lain" placeholder="Tuliskan jika ada...">
+                            <i class="ph ph-note-pencil input-icon"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-gradient mb-4">Simpan Pemantauan Hari Ini</button>
+            </form>
+        </main>
+    </div>
+
+    <script src="js/daily.js"></script>
+</body>
+</html>

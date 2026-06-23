@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Maternal Care AI</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <main class="landing-page">
+            <div class="hero-section">
+                <div class="icon-wrapper">
+                    <div class="icon-maternal">🤰</div>
+                </div>
+                <h1 class="app-title">SMART<br>MATERNAL<br>CARE <span>AI</span></h1>
+                <p class="app-subtitle">Monitoring Kehamilan 90 Hari dengan Analisis Kecerdasan Buatan</p>
+            </div>
+            
+            <div class="action-section" style="width: 100%;">
+                <a href="register.html" class="btn btn-primary">Mulai Pemantauan</a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const dataIbuTerdaftar = localStorage.getItem('ibu_hamil');
+            
+            if (dataIbuTerdaftar) {
+                console.log("Ibu sudah terdaftar. Mengalihkan langsung ke Daily Tracker...");
+                window.location.href = 'daily.html'; 
+            }
+        });
+    </script>
+</body>
+</html>

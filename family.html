@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Support - Smart Maternal Care</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="js/api.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header" style="padding-bottom: 2.5rem; background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);">
+            <h2>Dukungan Keluarga</h2>
+            <p>Evaluasi mingguan peran support system Ibu.</p>
+        </header>
+
+        <main class="form-container">
+            <form id="familyForm">
+                <div class="card mb-4 mt-4">
+                    <h3 class="section-title"><i class="ph-fill ph-users-three" style="color: #ec4899;"></i> Evaluasi Mingguan</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">Pilih 'Ya' jika keluarga/suami melakukan hal berikut dalam seminggu terakhir.</p>
+
+                    <div class="form-group">
+                        <label>Suami mengingatkan minum TTD?</label>
+                        <div class="chip-group">
+                            <input type="radio" name="kel_ttd" id="kel_ttd_ya" value="Ya" required>
+                            <label for="kel_ttd_ya">Ya</label>
+                            <input type="radio" name="kel_ttd" id="kel_ttd_tidak" value="Tidak">
+                            <label for="kel_ttd_tidak">Tidak</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Suami mendampingi kontrol kehamilan?</label>
+                        <div class="chip-group">
+                            <input type="radio" name="kel_kontrol" id="kel_kontrol_ya" value="Ya" required>
+                            <label for="kel_kontrol_ya">Ya</label>
+                            <input type="radio" name="kel_kontrol" id="kel_kontrol_tidak" value="Tidak">
+                            <label for="kel_kontrol_tidak">Tidak</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Membantu pekerjaan rumah tangga?</label>
+                        <div class="chip-group">
+                            <input type="radio" name="kel_rumah" id="kel_rumah_ya" value="Ya" required>
+                            <label for="kel_rumah_ya">Ya</label>
+                            <input type="radio" name="kel_rumah" id="kel_rumah_tidak" value="Tidak">
+                            <label for="kel_rumah_tidak">Tidak</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Memberikan dukungan emosional?</label>
+                        <div class="chip-group">
+                            <input type="radio" name="kel_emosi" id="kel_emosi_ya" value="Ya" required>
+                            <label for="kel_emosi_ya">Ya</label>
+                            <input type="radio" name="kel_emosi" id="kel_emosi_tidak" value="Tidak">
+                            <label for="kel_emosi_tidak">Tidak</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Mengingatkan pola makan bergizi?</label>
+                        <div class="chip-group">
+                            <input type="radio" name="kel_makan" id="kel_makan_ya" value="Ya" required>
+                            <label for="kel_makan_ya">Ya</label>
+                            <input type="radio" name="kel_makan" id="kel_makan_tidak" value="Tidak">
+                            <label for="kel_makan_tidak">Tidak</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Tidak ada konflik keluarga?</label>
+                        <div class="chip-group">
+                            <input type="radio" name="kel_konflik" id="kel_konflik_ya" value="Ya" required>
+                            <label for="kel_konflik_ya">Ya</label>
+                            <input type="radio" name="kel_konflik" id="kel_konflik_tidak" value="Tidak">
+                            <label for="kel_konflik_tidak">Tidak</label>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary mb-4" style="background: #ec4899; box-shadow: 0 10px 25px -5px rgba(236, 72, 153, 0.4);">Simpan Dukungan Keluarga</button>
+            </form>
+        </main>
+    </div>
+
+    <script src="js/family.js"></script>
+</body>
+</html>
