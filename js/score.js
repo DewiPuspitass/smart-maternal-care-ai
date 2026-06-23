@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
         badgeBg = "#fecaca";
     }
 
-    if (daily.perdarahan === "Ya" || daily.bengkak === "Ya") {
+    if (daily.pendarahan === "Ya" || daily.bengkak === "Ya") {
         kategori = "DARURAT MEDIS";
         riskColor = "#991b1b";
         badgeBg = "#fecaca";
@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
         score_mental: scoreMental,
         score_keluarga: scoreKeluarga,
         kategori: kategori,
-        gejala_kritis: (daily.perdarahan === "Ya" || daily.bengkak === "Ya") ? "Ya" : "Tidak" 
+        gejala_kritis: (daily.pendarahan === "Ya" || daily.bengkak === "Ya") ? "Ya" : "Tidak" 
     };
 
     console.log("Data siap dikirim ke AI:", finalDataForAI);

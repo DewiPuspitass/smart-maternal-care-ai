@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
             mual: document.getElementById('gejala_mual').checked ? "Ya" : "Tidak",
             pusing: document.getElementById('gejala_pusing').checked ? "Ya" : "Tidak",
             bengkak: document.getElementById('gejala_bengkak').checked ? "Ya" : "Tidak",
-            perdarahan: document.getElementById('gejala_perdarahan').checked ? "Ya" : "Tidak",
+            pendarahan: document.getElementById('gejala_pendarahan').checked ? "Ya" : "Tidak",
             keluhan_lain: document.getElementById('keluhan_lain').value.trim()
         };
 
